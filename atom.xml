@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>花甲的博客</title>
+  
+  
+  <link href="http://huajia.online/atom.xml" rel="self"/>
+  
+  <link href="http://huajia.online/"/>
+  <updated>2021-09-23T05:49:40.850Z</updated>
+  <id>http://huajia.online/</id>
+  
+  <author>
+    <name>花甲</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>走线通流计算</title>
+    <link href="http://huajia.online/2021/09/23/%E8%B5%B0%E7%BA%BF%E9%80%9A%E6%B5%81%E8%AE%A1%E7%AE%97/"/>
+    <id>http://huajia.online/2021/09/23/%E8%B5%B0%E7%BA%BF%E9%80%9A%E6%B5%81%E8%AE%A1%E7%AE%97/</id>
+    <published>2021-09-23T03:47:13.000Z</published>
+    <updated>2021-09-23T05:49:40.850Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="走线通流计算"><a href="#走线通流计算" class="headerlink" title="走线通流计算"></a>走线通流计算</h1><p><strong>转载自逆天pcb论坛，链接为：</strong><a href="http://dl.ntpcb.com/attachment/thumb/Day_210923/14_25828_edccee9b6784c9f.png?71">http://dl.ntpcb.com/attachment/thumb/Day_210923/14_25828_edccee9b6784c9f.png?71</a></p><p>pcb走线载流能力取决于线宽、铜厚、温升，计算方式可以参考以下公式：</p><p>I = K * (T^0.44) * (A^0.75)</p><span id="more"></span><p>K为修正系数，一般覆铜线在内层时取0.024，在外层时区0.048；</p><p>T为最大温升，单位为摄氏度；</p><p>A为覆铜截面积，单位为平方mil，大部分PCB的铜箔厚度为35um（1oz铜厚），乘上他的线宽就是截面积；</p><p>I为容许的最大电流，单位为A。</p><img src="/2021/09/23/%E8%B5%B0%E7%BA%BF%E9%80%9A%E6%B5%81%E8%AE%A1%E7%AE%97/%E8%B5%B0%E7%BA%BF%E6%B5%81%E9%80%9A%E8%AE%A1%E7%AE%97.png" class title="[走线流通计算]">]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;走线通流计算&quot;&gt;&lt;a href=&quot;#走线通流计算&quot; class=&quot;headerlink&quot; title=&quot;走线通流计算&quot;&gt;&lt;/a&gt;走线通流计算&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;转载自逆天pcb论坛，链接为：&lt;/strong&gt;&lt;a href=&quot;http://dl.ntpcb.com/attachment/thumb/Day_210923/14_25828_edccee9b6784c9f.png?71&quot;&gt;http://dl.ntpcb.com/attachment/thumb/Day_210923/14_25828_edccee9b6784c9f.png?71&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;pcb走线载流能力取决于线宽、铜厚、温升，计算方式可以参考以下公式：&lt;/p&gt;
+&lt;p&gt;I = K * (T^0.44) * (A^0.75)&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="pcb布线" scheme="http://huajia.online/tags/pcb%E5%B8%83%E7%BA%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OJ38</title>
+    <link href="http://huajia.online/2021/09/22/OJ38/"/>
+    <id>http://huajia.online/2021/09/22/OJ38/</id>
+    <published>2021-09-22T07:41:39.000Z</published>
+    <updated>2021-09-22T09:08:59.368Z</updated>
+    
+    <content type="html"><![CDATA[<p>@<a href="http://oj.haizeix.com/problem/38">OJ38</a></p><h1 id="兔子繁育问题"><a href="#兔子繁育问题" class="headerlink" title="兔子繁育问题"></a>兔子繁育问题</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a><strong>问题描述：</strong></h2><p>链接：<a href="http://oj.haizeix.com/problem/38">http://oj.haizeix.com/problem/38</a></p><span id="more"></span><h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>由题意可知，1月份有1只小兔子出生，2月有2只，3月有3只，4月有5只…..，通过观察发现，当月的小兔子数量都是前两个月份的的小兔子数量的总和，这是标准的斐波那契数列。所以可以使用递归的方式进行解题。这里由于考虑到整型的所能存储的数据范围的问题，所以需要64位的整型进行存储。</p><h2 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h2><pre><code class="c">/*************************************************************************    &gt; File Name: oj_38.c    &gt; Author: huajia    &gt; Mail:     &gt; Created Time: Wed 22 Sep 2021 02:46:45 PM CST ************************************************************************/#include&lt;stdio.h&gt;#define MAX_NUM 100int main()&#123;    int num;    scanf(&quot;%d&quot;, &amp;num);    long long unsigned int a[MAX_NUM + 5] = &#123;0&#125;;    a[1] = 1;    a[2] = 2;    for (int i = 3; i &lt;= num; i++) &#123;        a[i] = a[i - 1] + a[i - 2];    &#125;    printf(&quot;%lld\n&quot;, a[num]);    return 0;&#125;</code></pre>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;@&lt;a href=&quot;http://oj.haizeix.com/problem/38&quot;&gt;OJ38&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;兔子繁育问题&quot;&gt;&lt;a href=&quot;#兔子繁育问题&quot; class=&quot;headerlink&quot; title=&quot;兔子繁育问题&quot;&gt;&lt;/a&gt;兔子繁育问题&lt;/h1&gt;&lt;h2 id=&quot;问题描述：&quot;&gt;&lt;a href=&quot;#问题描述：&quot; class=&quot;headerlink&quot; title=&quot;问题描述：&quot;&gt;&lt;/a&gt;&lt;strong&gt;问题描述：&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;链接：&lt;a href=&quot;http://oj.haizeix.com/problem/38&quot;&gt;http://oj.haizeix.com/problem/38&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="oj" scheme="http://huajia.online/tags/oj/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《鸟哥的Linux私房菜-基础篇》第四版</title>
+    <link href="http://huajia.online/2021/09/13/test-md/"/>
+    <id>http://huajia.online/2021/09/13/test-md/</id>
+    <published>2021-09-13T06:24:16.000Z</published>
+    <updated>2021-09-13T06:38:52.682Z</updated>
+    
+    <content type="html"><![CDATA[<center>**《鸟哥的Linux私房菜-基础篇》第四版**</center><span id="more"></span><br><div class="row">    <embed src="linux.pdf" width="100%" height="550" type="application/pdf"></div><br>]]></content>
+    
+    
+    <summary type="html">&lt;center&gt;**《鸟哥的Linux私房菜-基础篇》第四版**&lt;/center&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>作业：shell脚本编程</title>
+    <link href="http://huajia.online/2021/08/17/%E4%BD%9C%E4%B8%9A%EF%BC%9Ashell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/"/>
+    <id>http://huajia.online/2021/08/17/%E4%BD%9C%E4%B8%9A%EF%BC%9Ashell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/</id>
+    <published>2021-08-17T06:07:52.000Z</published>
+    <updated>2021-09-02T10:12:24.628Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="shell脚本编程"><a href="#shell脚本编程" class="headerlink" title="shell脚本编程"></a>shell脚本编程</h1><h2 id="任务完成情况"><a href="#任务完成情况" class="headerlink" title="任务完成情况"></a><strong>任务完成情况</strong></h2><img src="/2021/08/17/%E4%BD%9C%E4%B8%9A%EF%BC%9Ashell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/image-20210817140929052.png" class title="[任务完成情况]"><h2 id="整数问题"><a href="#整数问题" class="headerlink" title="整数问题"></a><strong>整数问题</strong></h2><p><strong>题目描述</strong></p><p>判断一个整数 a能否被另一个整数 b整除。</p><p><strong>示例代码：</strong></p><pre><code class="bash">#!/bin/bashread a bif [[ $&#123;a&#125;%$&#123;b&#125; -eq 0 ]]; then    echo YESelse    echo NOfi</code></pre><p><strong>代码思路</strong></p><p>1、输入a,b</p><p>2、判断a%b是否为零，若为零则输出YES,若不为零则输出NO</p><span id="more"></span><h2 id="七的整数倍"><a href="#七的整数倍" class="headerlink" title="七的整数倍"></a><strong>七的整数倍</strong></h2><p><strong>题目描述</strong></p><p>如果一个数既是 7的倍数又不能被 2整除，那么我们称之为七的奇倍数。</p><p>输入一个正整数 n，判断它是否是 7的奇倍数。</p><p><strong>示例代码：</strong></p><pre><code class="bash">#!/bin/bashread nif [[ $&#123;n&#125;%7 -eq 0 ]];then    if [[ $&#123;n&#125;%2 -eq 0 ]];then        echo NO    else         echo YES    fielse    echo NOfi</code></pre><p><strong>代码思路</strong></p><p>1、输入n</p><p>2、先判断n是不是七的整数倍，若能则在判断n能否被2整除，能被2整除的输出NO，不能的输出YES</p><h2 id="一个月有多少天"><a href="#一个月有多少天" class="headerlink" title="一个月有多少天"></a>一个月有多少天</h2><p><strong>题目描述</strong></p><p>给出一个年份 y和月份 m，求 y年 m月有多少天。</p><p><strong>示例代码：</strong></p><pre><code class="bash">#!/bin/bashread y mif [[ $&#123;m&#125; -eq 2 ]]; then    if [[ $&#123;y&#125;%4 -eq 0 &amp;&amp; $&#123;y&#125;%100 -ne 0 || $&#123;y&#125;%400 -eq 0 ]];then        echo 29    else        echo 28    fielif [[ m -eq 1 || m -eq 3 || m -eq 5 || m -eq 7 || m -eq 8 || m -eq 10 || m -eq 12 ]];then    echo 31else    echo 30fi</code></pre><p><strong>代码思路</strong></p><p>1、输入y和m</p><p>2、判断输入的是否为2，由于2月较为特殊，需要判断是否为闰年，为闰年则输出为29，否则输出28，而1、3、5、7、8、10、12月份均输出31，剩余的均输出为30</p><h2 id="买文具"><a href="#买文具" class="headerlink" title="买文具"></a>买文具</h2><p><strong>题目描述</strong></p><p>班级里的白板笔不够了，班主任交给班长路飞一个小任务：买尽量多的白板笔。</p><p>已知一支白板笔的价格是2元6角，而班主任给路飞的钱a是b元角。</p><p>请你帮助路飞用程序解决这个问题。</p><p><strong>示例代码：</strong></p><pre><code class="bash">read a bc=$a.$bd=2.6echo $&#123;c&#125;/$d | bc</code></pre><p><strong>代码思路</strong></p><p>1、输入a和b</p><p>2、由于sell脚本中的变量都已字符串形式存储且无法进行浮点运算，则将输入的a和b进行拼接，通过bc进行计算。</p><h2 id="计数问题"><a href="#计数问题" class="headerlink" title="计数问题"></a>计数问题</h2><p><strong>题目描述</strong></p><p>试计算在区间 1到 n的所有整数中，数字x (0~9)共出现了多少次？</p><p>例如，在 1到11中，即在 1,2,3,4,5,6,7,8,9,10,11 中，数字 1 出现了 4 次</p><p><strong>示例代码：</strong></p><pre><code class="bash">#!/bin/bashread n xfor (( i = 1; $i &lt;= $n; i++ )); do    a=$&#123;i&#125;$&#123;a&#125;doneecho $&#123;a&#125; | grep -o $&#123;x&#125; | wc -l</code></pre><p><strong>代码思路</strong></p><p>1、输入n和x</p><p>2、将输入的字符都拼接在一起</p><p>3、通过grep命令查找特定字符，然后wc命令进行统计</p><h2 id="校门口外的树"><a href="#校门口外的树" class="headerlink" title="校门口外的树"></a>校门口外的树</h2><p><strong>题目描述</strong></p><p>学校大门外长度为L的马路上有一排树，每两棵相邻的树之间的间隔都是1米。可以把马路看成一个数轴，马路的一端在数轴0的位置，另一端在L的位置，数轴上的每个整数点(即0，1，2，……，L)都有一棵树。</p><p>由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任意区域的起始点和终止点的坐标都是整数，区域之间可能有重合的部分。现在要把这些区域中的树(包括区域端点处的两棵树)移走。请计算将这些树都移走后，马路上还有多少棵树。</p><p><strong>示例代码：</strong></p><pre><code class="bash">#!/bin/bashread L Mfor (( i = 0; i &lt; $M; i++ ));do    read start end    for ((j = $&#123;start&#125;; j &lt;= $&#123;end&#125;; j++));do        tree[$&#123;j&#125;]=1    donedonefor (( i = 0; i &lt;= $&#123;L&#125;; i++ ));do#若tree数组为1则不统计，若数组为空则进行统计    if [[ $&#123;tree[$i]&#125;x == x ]];then        let cnt++    fidoneecho $&#123;cnt&#125;</code></pre><p><strong>代码思路</strong></p><p>1、将所在区间的树标记为1</p><p>2、标记为1的区间内所有的树都不在计数范围内</p><h2 id="插队"><a href="#插队" class="headerlink" title="插队"></a>插队</h2><p><strong>题目描述</strong></p><p>有n个人(每个人有一个唯一的编号，用1~n之间的整数表示)在一个水龙头前排队准备接水，现在第n个人有特殊情况，经过协商，大家允许他插队到第x个位置。输出第个人插队后的排队情况。</p><pre><code class="bash">#!/bin/bashread nread adui=($a)read xb=$&#123;dui[$[$n-1]]&#125;for ((i = $n - 1; $i &gt;= $x; i--));do    dui[$i]=$&#123;dui[$[$i-1]]&#125;donedui[$[$x-1]]=$becho $&#123;dui[*]&#125;</code></pre><h2 id="走楼梯"><a href="#走楼梯" class="headerlink" title="走楼梯"></a>走楼梯</h2><p><strong>题目描述</strong></p><p>一个楼梯有 n级，小苏同学从下往上走，一步可以跨一级，也可以跨两级。</p><p>问：他走到第 n级楼梯有多少种走法？</p><p><strong>示例代码：</strong></p><pre><code class="bash">#!/bin/bashread na[1]=1a[2]=2for ((i = 3; $i &lt;= $n; i++));do    a[$i]=$[$&#123;a[$i-1]&#125;+$&#123;a[$i-2]&#125;]donefor ((i = 1; $i &lt;= $n; i++));do    echo -n $&#123;a[$i]&#125;&quot; &quot;done</code></pre><p><strong>代码思路</strong></p><p>根据斐波那契数列数列的思路可以求出答案</p><h2 id="比升高"><a href="#比升高" class="headerlink" title="比升高"></a>比升高</h2><p><strong>题目描述</strong></p><p>有N个人排成一排，假设他们的身高均为正整数，请找出其中符合以下条件的人：</p><p>排在他前面且比他高的人数与排在他后面且比他高的人数相等。</p><p><strong>示例代码：</strong></p><pre><code class="bash">read nfor (( i = 1; $i &lt;= n; i++ ));do    read input1    x[$i]=$input1doneflag=0for (( i = 1; $i &lt;= $n; i++ ));do    num1=0    num2=0    for (( j = $i - 1; j &gt;= 1; j-- ));do        if [[ $&#123;x[$j]&#125; -gt $&#123;x[$i]&#125; ]];then            let num1++        fi    done    for ((j = $i + 1; $j &lt;= n; j++));do        if [[ $&#123;x[$j]&#125; -gt $&#123;x[$i]&#125; ]];then            let num2++        fi    done        if [[ $num1 -eq $num2 ]];then        let flag++    fidoneecho $flag</code></pre><p><strong>代码思路</strong></p><p>首先第一个循环进行遍历全部数字，内嵌套的两个循环进行正逆序遍历。将遍历到的结果进行比较，相等则flag计数加一。最后输出统计的flag数.</p><h2 id="路飞爬楼梯"><a href="#路飞爬楼梯" class="headerlink" title="路飞爬楼梯"></a>路飞爬楼梯</h2><p><strong>题目描述</strong></p><p>这一节我们需要讨论的是一个递推的问题。在海贼理工学院有一个路飞君，他在爬楼梯的时候从来都是要么上 2个台阶，要么上 3个台阶。由于爬楼梯实在太无聊了，路飞君就开始尝试每天采用不同的方式上楼梯。如果路飞君回家需要爬 N阶台阶，你能告诉路飞君，他爬楼梯回家有多少种不同的方式吗？</p><p>请注意，路飞君“先爬 3个台阶后爬 2个台阶”和“先爬 2个台阶后爬 3个台阶”是两种不同的回家方式。</p><pre><code class="bash">#!/bin/bash read nstep[1]=0step[2]=1step[3]=1for (( i=4; $i &lt;= $n; i++ ));do    step[$i]=$[$&#123;step[$[$i-2]]&#125;+$&#123;step[$[$i-3]]&#125;]doneecho $&#123;step[$n]&#125;</code></pre><p><strong>代码思路</strong></p><p>斐波那契数列的思想</p><h2 id="菲波那切数列"><a href="#菲波那切数列" class="headerlink" title="菲波那切数列"></a>菲波那切数列</h2><p><strong>题目描述</strong></p><p>相信小伙伴们都学过斐波那契数列，求第n项斐波那契数列</p><pre><code class="bash">#!/bin/bashread nf[1]=1f[2]=1for ((i = 3; $i &lt;= $n; i++));do    f[$i]=$[$&#123;f[$[$i-1]]&#125;+$&#123;f[$[$i-2]]&#125;]doneecho $&#123;f[$n]&#125;</code></pre><p><strong>代码思路</strong></p><p>斐波那契数列的思想</p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;shell脚本编程&quot;&gt;&lt;a href=&quot;#shell脚本编程&quot; class=&quot;headerlink&quot; title=&quot;shell脚本编程&quot;&gt;&lt;/a&gt;shell脚本编程&lt;/h1&gt;&lt;h2 id=&quot;任务完成情况&quot;&gt;&lt;a href=&quot;#任务完成情况&quot; class=&quot;headerlink&quot; title=&quot;任务完成情况&quot;&gt;&lt;/a&gt;&lt;strong&gt;任务完成情况&lt;/strong&gt;&lt;/h2&gt;&lt;img src=&quot;/2021/08/17/%E4%BD%9C%E4%B8%9A%EF%BC%9Ashell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/image-20210817140929052.png&quot; class title=&quot;[任务完成情况]&quot;&gt;
+
+&lt;h2 id=&quot;整数问题&quot;&gt;&lt;a href=&quot;#整数问题&quot; class=&quot;headerlink&quot; title=&quot;整数问题&quot;&gt;&lt;/a&gt;&lt;strong&gt;整数问题&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;判断一个整数 a能否被另一个整数 b整除。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例代码：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;#!/bin/bash
+read a b
+if [[ $&amp;#123;a&amp;#125;%$&amp;#123;b&amp;#125; -eq 0 ]]; then
+    echo YES
+else
+    echo NO
+fi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;代码思路&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1、输入a,b&lt;/p&gt;
+&lt;p&gt;2、判断a%b是否为零，若为零则输出YES,若不为零则输出NO&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="作业" scheme="http://huajia.online/tags/%E4%BD%9C%E4%B8%9A/"/>
+    
+    <category term="shell脚本编程" scheme="http://huajia.online/tags/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Linux学习" scheme="http://huajia.online/tags/Linux%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计数问题</title>
+    <link href="http://huajia.online/2021/08/16/%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/"/>
+    <id>http://huajia.online/2021/08/16/%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/</id>
+    <published>2021-08-16T12:55:36.000Z</published>
+    <updated>2021-09-02T10:12:24.632Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="计数问题"><a href="#计数问题" class="headerlink" title="计数问题"></a>计数问题</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>试计算在区间 1到 n的所有整数中，数字x (0&lt;= x &lt;=9)共出现了多少次？</p><p>例如，在 1到11中，即在 1,2,3,4,5,6,7,8,9,10,11 中，数字 1 出现了 4 次。</p><span id="more"></span><h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a><strong>输入</strong></h2><p>2个整数 n，x，之间用一个空格隔开。</p><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a><strong>输出</strong></h2><p>1个整数，x表示出现的次数。</p><h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a><strong>样例输入</strong></h2><pre><code>11 1</code></pre><h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a><strong>样例输出</strong></h2><pre><code>4</code></pre><h2 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a><strong>数据规模与约定</strong></h2><p>时间限制：3 s</p><p>对于 100%的数据，(0&lt;= x &lt;=9)</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><pre><code class="bash">#!/bin/bashread n xfor (( i = 1; $i &lt;= $n; i++ )); do    a=$&#123;i&#125;$&#123;a&#125;doneecho $&#123;a&#125; | grep -o $&#123;x&#125; | wc -l</code></pre>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;计数问题&quot;&gt;&lt;a href=&quot;#计数问题&quot; class=&quot;headerlink&quot; title=&quot;计数问题&quot;&gt;&lt;/a&gt;计数问题&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;试计算在区间 1到 n的所有整数中，数字x (0&amp;lt;= x &amp;lt;=9)共出现了多少次？&lt;/p&gt;
+&lt;p&gt;例如，在 1到11中，即在 1,2,3,4,5,6,7,8,9,10,11 中，数字 1 出现了 4 次。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="shell编程" scheme="http://huajia.online/tags/shell%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="linux学习" scheme="http://huajia.online/tags/linux%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="开课吧作业评测" scheme="http://huajia.online/tags/%E5%BC%80%E8%AF%BE%E5%90%A7%E4%BD%9C%E4%B8%9A%E8%AF%84%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>买文具</title>
+    <link href="http://huajia.online/2021/08/16/%E4%B9%B0%E6%96%87%E5%85%B7/"/>
+    <id>http://huajia.online/2021/08/16/%E4%B9%B0%E6%96%87%E5%85%B7/</id>
+    <published>2021-08-16T12:51:03.000Z</published>
+    <updated>2021-09-02T10:12:24.628Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>班级里的白板笔不够了，班主任交给班长路飞一个小任务：买尽量多的白板笔。</p><p>已知一支白板笔的价格是2元6角，而班主任给路飞的钱是元角。</p><p>请你帮助路飞用程序解决这个问题。</p><span id="more"></span><h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a><strong>输入</strong></h2><p>输入的数据，在一行内，包括两个整数，依次表示a和b,0&lt;= a &lt;= 10000, 0&lt;= b &lt;=9</p><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a><strong>输出</strong></h2><p>输出一个整数，表示路飞最多能买多少只白板笔。</p><h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a><strong>样例输入</strong></h2><pre><code>10 3</code></pre><h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a><strong>样例输出</strong></h2><pre><code>3</code></pre><h2 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a><strong>数据规模与约定</strong></h2><p>时间限制：3 s</p><p>100% 的数据保证, 0&lt;= a &lt;= 10000, 0&lt;= b &lt;=9</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><pre><code class="bash">#!/bin/bashread a bc=$a.$bd=2.6echo $&#123;c&#125;/$d | bc</code></pre>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;班级里的白板笔不够了，班主任交给班长路飞一个小任务：买尽量多的白板笔。&lt;/p&gt;
+&lt;p&gt;已知一支白板笔的价格是2元6角，而班主任给路飞的钱是元角。&lt;/p&gt;
+&lt;p&gt;请你帮助路飞用程序解决这个问题。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="shell编程" scheme="http://huajia.online/tags/shell%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="linux学习" scheme="http://huajia.online/tags/linux%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="开课吧作业评测" scheme="http://huajia.online/tags/%E5%BC%80%E8%AF%BE%E5%90%A7%E4%BD%9C%E4%B8%9A%E8%AF%84%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个月有几天</title>
+    <link href="http://huajia.online/2021/08/16/%E4%B8%80%E4%B8%AA%E6%9C%88%E6%9C%89%E5%87%A0%E5%A4%A9/"/>
+    <id>http://huajia.online/2021/08/16/%E4%B8%80%E4%B8%AA%E6%9C%88%E6%9C%89%E5%87%A0%E5%A4%A9/</id>
+    <published>2021-08-16T12:44:10.000Z</published>
+    <updated>2021-09-02T10:12:24.624Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一个月有多少天"><a href="#一个月有多少天" class="headerlink" title="一个月有多少天"></a>一个月有多少天</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>给出一个年份 y和月份 m，求 y年 m月有多少天。</p><span id="more"></span><h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a><strong>输入</strong></h2><p>输入两个整数 y,m表示年份和月份(1000&lt;= y &lt;= 3000, 1&lt;= m &lt;= 12)</p><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a><strong>输出</strong></h2><p>输出 y年 m月的天数。</p><h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a><strong>样例输入</strong></h2><pre><code>2000 2</code></pre><h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a><strong>样例输出</strong></h2><pre><code>29</code></pre><h2 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a><strong>数据规模与约定</strong></h2><p>时间限制：3 s</p><p>100% 的数据保证 (1000&lt;= y &lt;= 3000, 1&lt;= m &lt;= 12)</p><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a><strong>提示</strong></h2><p>注意闰年的判断</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><pre><code class="bash">#!/bin/bashread y mif [[ $&#123;m&#125; -eq 2 ]]; then    if [[ $&#123;y&#125;%4 -eq 0 &amp;&amp; $&#123;y&#125;%100 -ne 0 || $&#123;y&#125;%400 -eq 0 ]];then        echo 29    else        echo 28    fielif [[ m -eq 1 || m -eq 3 || m -eq 5 || m -eq 7 || m -eq 8 || m -eq 10 || m -eq 12 ]];then    echo 31else    echo 30fi</code></pre>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;一个月有多少天&quot;&gt;&lt;a href=&quot;#一个月有多少天&quot; class=&quot;headerlink&quot; title=&quot;一个月有多少天&quot;&gt;&lt;/a&gt;一个月有多少天&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;给出一个年份 y和月份 m，求 y年 m月有多少天。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="shell编程" scheme="http://huajia.online/tags/shell%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="linux学习" scheme="http://huajia.online/tags/linux%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="开课吧作业评测" scheme="http://huajia.online/tags/%E5%BC%80%E8%AF%BE%E5%90%A7%E4%BD%9C%E4%B8%9A%E8%AF%84%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>七的整数倍</title>
+    <link href="http://huajia.online/2021/08/16/%E4%B8%83%E7%9A%84%E6%95%B4%E6%95%B0%E5%80%8D/"/>
+    <id>http://huajia.online/2021/08/16/%E4%B8%83%E7%9A%84%E6%95%B4%E6%95%B0%E5%80%8D/</id>
+    <published>2021-08-16T06:56:12.000Z</published>
+    <updated>2021-09-02T10:12:24.626Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="七的奇倍数"><a href="#七的奇倍数" class="headerlink" title="七的奇倍数"></a>七的奇倍数</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>如果一个数既是 7的倍数又不能被 2整除，那么我们称之为七的奇倍数。</p><p>输入一个正整数 n，判断它是否是 7的奇倍数。</p><span id="more"></span><h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a><strong>输入</strong></h2><p>输入一个正整数 n(0 &lt;= n &lt;= 100)</p><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a><strong>输出</strong></h2><p>如果 n是 7的奇倍数 输出 YES否则输出 NO</p><h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a><strong>样例输入</strong></h2><pre><code>49</code></pre><h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a><strong>样例输出</strong></h2><pre><code>YES</code></pre><h2 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a><strong>数据规模与约定</strong></h2><p>时间限制：3 s</p><p>100% 的数据保证 (0 &lt;= n &lt;= 100)</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><pre><code class="bash">#!/bin/bashread nif [[ $&#123;n&#125;%7 -eq 0 ]];then    if [[ $&#123;n&#125;%2 -eq 0 ]];then        echo NO    else         echo YES    fielse    echo NOfi</code></pre>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;七的奇倍数&quot;&gt;&lt;a href=&quot;#七的奇倍数&quot; class=&quot;headerlink&quot; title=&quot;七的奇倍数&quot;&gt;&lt;/a&gt;七的奇倍数&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;如果一个数既是 7的倍数又不能被 2整除，那么我们称之为七的奇倍数。&lt;/p&gt;
+&lt;p&gt;输入一个正整数 n，判断它是否是 7的奇倍数。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="shell编程" scheme="http://huajia.online/tags/shell%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="linux学习" scheme="http://huajia.online/tags/linux%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="开课吧作业评测" scheme="http://huajia.online/tags/%E5%BC%80%E8%AF%BE%E5%90%A7%E4%BD%9C%E4%B8%9A%E8%AF%84%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>整除问题</title>
+    <link href="http://huajia.online/2021/08/16/%E6%95%B4%E9%99%A4%E9%97%AE%E9%A2%98/"/>
+    <id>http://huajia.online/2021/08/16/%E6%95%B4%E9%99%A4%E9%97%AE%E9%A2%98/</id>
+    <published>2021-08-16T06:24:50.000Z</published>
+    <updated>2021-09-02T10:12:24.630Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="整除问题"><a href="#整除问题" class="headerlink" title="整除问题"></a>整除问题</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>判断一个整数 能否被另一个整数 整除。</p><span id="more"></span><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>输入两个整数 a,b（1 &lt;= a,b &lt;= 500）</p><h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p> a 能被 b 整除输出 YES 否则输出 NO</p><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>21 7</code></pre><p>样例输出</p><pre><code>YES</code></pre><h3 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h3><p>时间限制：3 s</p><p>100% 的数据保证 1 &lt;= a,b &lt;= 500</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="bash">#!/bin/bashread a bif [[ $&#123;a&#125;%$&#123;b&#125; -eq 0 ]]; then    echo YESelse    echo NOfi</code></pre>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;整除问题&quot;&gt;&lt;a href=&quot;#整除问题&quot; class=&quot;headerlink&quot; title=&quot;整除问题&quot;&gt;&lt;/a&gt;整除问题&lt;/h1&gt;&lt;h3 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h3&gt;&lt;p&gt;判断一个整数 能否被另一个整数 整除。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="shell编程" scheme="http://huajia.online/tags/shell%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="linux学习" scheme="http://huajia.online/tags/linux%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="开课吧作业评测" scheme="http://huajia.online/tags/%E5%BC%80%E8%AF%BE%E5%90%A7%E4%BD%9C%E4%B8%9A%E8%AF%84%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决hexo在新窗口打开链接问题</title>
+    <link href="http://huajia.online/2021/08/15/%E8%A7%A3%E5%86%B3hexo%E5%9C%A8%E6%96%B0%E7%AA%97%E5%8F%A3%E6%89%93%E5%BC%80%E9%93%BE%E6%8E%A5%E9%97%AE%E9%A2%98/"/>
+    <id>http://huajia.online/2021/08/15/%E8%A7%A3%E5%86%B3hexo%E5%9C%A8%E6%96%B0%E7%AA%97%E5%8F%A3%E6%89%93%E5%BC%80%E9%93%BE%E6%8E%A5%E9%97%AE%E9%A2%98/</id>
+    <published>2021-08-15T03:26:34.000Z</published>
+    <updated>2021-09-02T10:12:24.631Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>hexo在使用yilia-plus主题后，点击主页、归档等时会打开新的窗口</p><span id="more"></span><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>在themes\yilia-plus下的_config.yml修改true为false</p><pre><code class="yml"># Open link in a new tab | 是否在新窗口打开链接open_in_new:  article: false  # 文章链接  menu: false   # 导航菜单  subNav: false  # 子菜单</code></pre>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;hexo在使用yilia-plus主题后，点击主页、归档等时会打开新的窗口&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="hexo" scheme="http://huajia.online/categories/hexo/"/>
+    
+    
+    <category term="hexo" scheme="http://huajia.online/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo发生error: spawn failed错误的解决方法</title>
+    <link href="http://huajia.online/2021/08/15/hexo%E5%8F%91%E7%94%9Ferror-spawn-failed%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://huajia.online/2021/08/15/hexo%E5%8F%91%E7%94%9Ferror-spawn-failed%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2021-08-15T03:16:54.000Z</published>
+    <updated>2021-09-02T10:12:24.625Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在执行hexo d命令是出现error: spawn failed</p><p>问题是git在进行push和hexo d的时候改变了一些.deploy_git文件下的内容</p><span id="more"></span><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>1、删除.deploy_git文件夹</p><p>2、输入<code>git config --global core.autocrlf false</code></p><p>3、然后三板斧:<code>hexo clean</code>, <code>hexo g</code>, <code>hexo d</code></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;在执行hexo d命令是出现error: spawn failed&lt;/p&gt;
+&lt;p&gt;问题是git在进行push和hexo d的时候改变了一些.deploy_git文件下的内容&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="hexo" scheme="http://huajia.online/categories/hexo/"/>
+    
+    
+    <category term="hexo" scheme="http://huajia.online/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo之yilia主题添加归档</title>
+    <link href="http://huajia.online/2021/08/14/hexo%E4%B9%8Byilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E5%BD%92%E6%A1%A3/"/>
+    <id>http://huajia.online/2021/08/14/hexo%E4%B9%8Byilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E5%BD%92%E6%A1%A3/</id>
+    <published>2021-08-14T12:21:44.000Z</published>
+    <updated>2021-09-02T10:12:24.622Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="添加archives页面"><a href="#添加archives页面" class="headerlink" title="添加archives页面"></a>添加archives页面</h1><h2 id="生成index-md文件"><a href="#生成index-md文件" class="headerlink" title="生成index.md文件"></a>生成index.md文件</h2><pre><code class="bash">hexo new page &quot;archives&quot;hexo new page &quot;categories&quot;</code></pre><p>在myblogs\source\archives和myblogs\source\categories下生成一个文件夹，文件夹下有一个index.md文件</p><span id="more"></span><h2 id="修改index-md文件"><a href="#修改index-md文件" class="headerlink" title="修改index.md文件"></a>修改index.md文件</h2><pre><code class="markdown">-----title: archivesdate: 2019-11-29 16:52:26type: &quot;archives&quot;------</code></pre><pre><code class="markdown">-----title: archivesdate: 2019-11-29 16:52:26type: &quot;categories&quot;------</code></pre><h2 id="添加-categories-到menu菜单"><a href="#添加-categories-到menu菜单" class="headerlink" title="添加 categories 到menu菜单"></a>添加 categories 到menu菜单</h2><p>在yilia主题下的主配置文件_config.xml中找到menu,并把categories添加进去</p><pre><code>menu:  主页: /  分类: /categories  归档: /archives</code></pre><h2 id="修改归档页面背景（不改也行）"><a href="#修改归档页面背景（不改也行）" class="headerlink" title="修改归档页面背景（不改也行）"></a>修改归档页面背景（不改也行）</h2><p>文件：main.826e88.css<br>路径：themes/yilia-plus/source/</p><pre><code class="bash">.archives-wrap &#123;    position:relative;    margin:0 30px;    padding-right:60px;    border-bottom:1px solid #eee;    /* background:#fff */    background: rgba(255,255,255,.5);&#125;.article-meta time &#123;    /* color:#aaa */    color: #2f2d2a;&#125;.archives .archive-article-title &#123;    font-size:20px;    /* color:#333; */    transition:color .3s&#125;.archives .archive-article-title:hover &#123;    /* color:#657b83 */</code></pre>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;添加archives页面&quot;&gt;&lt;a href=&quot;#添加archives页面&quot; class=&quot;headerlink&quot; title=&quot;添加archives页面&quot;&gt;&lt;/a&gt;添加archives页面&lt;/h1&gt;&lt;h2 id=&quot;生成index-md文件&quot;&gt;&lt;a href=&quot;#生成index-md文件&quot; class=&quot;headerlink&quot; title=&quot;生成index.md文件&quot;&gt;&lt;/a&gt;生成index.md文件&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;hexo new page &amp;quot;archives&amp;quot;
+hexo new page &amp;quot;categories&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在myblogs\source\archives和myblogs\source\categories下生成一个文件夹，文件夹下有一个index.md文件&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="hexo" scheme="http://huajia.online/categories/hexo/"/>
+    
+    
+    <category term="hexo" scheme="http://huajia.online/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://huajia.online/2021/08/14/hello-world/"/>
+    <id>http://huajia.online/2021/08/14/hello-world/</id>
+    <published>2021-08-14T12:20:44.000Z</published>
+    <updated>2021-09-02T10:12:24.620Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><span id="more"></span><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;$ hexo new &amp;quot;My New Post&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="hello world" scheme="http://huajia.online/categories/hello-world/"/>
+    
+    
+    <category term="hello world" scheme="http://huajia.online/tags/hello-world/"/>
+    
+  </entry>
+  
+</feed>
