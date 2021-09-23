@@ -6,7 +6,7 @@
   <link href="http://huajia.online/atom.xml" rel="self"/>
   
   <link href="http://huajia.online/"/>
-  <updated>2021-09-23T05:49:40.850Z</updated>
+  <updated>2021-09-23T06:11:54.097Z</updated>
   <id>http://huajia.online/</id>
   
   <author>
@@ -21,12 +21,12 @@
     <link href="http://huajia.online/2021/09/23/%E8%B5%B0%E7%BA%BF%E9%80%9A%E6%B5%81%E8%AE%A1%E7%AE%97/"/>
     <id>http://huajia.online/2021/09/23/%E8%B5%B0%E7%BA%BF%E9%80%9A%E6%B5%81%E8%AE%A1%E7%AE%97/</id>
     <published>2021-09-23T03:47:13.000Z</published>
-    <updated>2021-09-23T05:49:40.850Z</updated>
+    <updated>2021-09-23T06:11:54.097Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="走线通流计算"><a href="#走线通流计算" class="headerlink" title="走线通流计算"></a>走线通流计算</h1><p><strong>转载自逆天pcb论坛，链接为：</strong><a href="http://dl.ntpcb.com/attachment/thumb/Day_210923/14_25828_edccee9b6784c9f.png?71">http://dl.ntpcb.com/attachment/thumb/Day_210923/14_25828_edccee9b6784c9f.png?71</a></p><p>pcb走线载流能力取决于线宽、铜厚、温升，计算方式可以参考以下公式：</p><p>I = K * (T^0.44) * (A^0.75)</p><span id="more"></span><p>K为修正系数，一般覆铜线在内层时取0.024，在外层时区0.048；</p><p>T为最大温升，单位为摄氏度；</p><p>A为覆铜截面积，单位为平方mil，大部分PCB的铜箔厚度为35um（1oz铜厚），乘上他的线宽就是截面积；</p><p>I为容许的最大电流，单位为A。</p><img src="/2021/09/23/%E8%B5%B0%E7%BA%BF%E9%80%9A%E6%B5%81%E8%AE%A1%E7%AE%97/%E8%B5%B0%E7%BA%BF%E6%B5%81%E9%80%9A%E8%AE%A1%E7%AE%97.png" class title="[走线流通计算]">]]></content>
+    <content type="html"><![CDATA[<h1 id="走线通流计算"><a href="#走线通流计算" class="headerlink" title="走线通流计算"></a>走线通流计算</h1><p><strong>转载自逆天pcb论坛，链接为：</strong><a href="http://bbs.ntpcb.com/read-htm-tid-180236.html">http://bbs.ntpcb.com/read-htm-tid-180236.html</a></p><p>pcb走线载流能力取决于线宽、铜厚、温升，计算方式可以参考以下公式：</p><p>I = K * (T^0.44) * (A^0.75)</p><span id="more"></span><p>K为修正系数，一般覆铜线在内层时取0.024，在外层时区0.048；</p><p>T为最大温升，单位为摄氏度；</p><p>A为覆铜截面积，单位为平方mil，大部分PCB的铜箔厚度为35um（1oz铜厚），乘上他的线宽就是截面积；</p><p>I为容许的最大电流，单位为A。</p><img src="/2021/09/23/%E8%B5%B0%E7%BA%BF%E9%80%9A%E6%B5%81%E8%AE%A1%E7%AE%97/%E8%B5%B0%E7%BA%BF%E6%B5%81%E9%80%9A%E8%AE%A1%E7%AE%97.png" class title="[走线流通计算]">]]></content>
     
     
-    <summary type="html">&lt;h1 id=&quot;走线通流计算&quot;&gt;&lt;a href=&quot;#走线通流计算&quot; class=&quot;headerlink&quot; title=&quot;走线通流计算&quot;&gt;&lt;/a&gt;走线通流计算&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;转载自逆天pcb论坛，链接为：&lt;/strong&gt;&lt;a href=&quot;http://dl.ntpcb.com/attachment/thumb/Day_210923/14_25828_edccee9b6784c9f.png?71&quot;&gt;http://dl.ntpcb.com/attachment/thumb/Day_210923/14_25828_edccee9b6784c9f.png?71&lt;/a&gt;&lt;/p&gt;
+    <summary type="html">&lt;h1 id=&quot;走线通流计算&quot;&gt;&lt;a href=&quot;#走线通流计算&quot; class=&quot;headerlink&quot; title=&quot;走线通流计算&quot;&gt;&lt;/a&gt;走线通流计算&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;转载自逆天pcb论坛，链接为：&lt;/strong&gt;&lt;a href=&quot;http://bbs.ntpcb.com/read-htm-tid-180236.html&quot;&gt;http://bbs.ntpcb.com/read-htm-tid-180236.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;pcb走线载流能力取决于线宽、铜厚、温升，计算方式可以参考以下公式：&lt;/p&gt;
 &lt;p&gt;I = K * (T^0.44) * (A^0.75)&lt;/p&gt;</summary>
     
