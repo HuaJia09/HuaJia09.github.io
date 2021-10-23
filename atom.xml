@@ -6,7 +6,7 @@
   <link href="http://huajia.online/atom.xml" rel="self"/>
   
   <link href="http://huajia.online/"/>
-  <updated>2021-09-23T06:11:54.097Z</updated>
+  <updated>2021-10-23T09:52:02.802Z</updated>
   <id>http://huajia.online/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ArozOS+树莓派小型NAS</title>
+    <link href="http://huajia.online/2021/10/23/ArozOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/"/>
+    <id>http://huajia.online/2021/10/23/ArozOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/</id>
+    <published>2021-10-23T07:26:06.000Z</published>
+    <updated>2021-10-23T09:52:02.802Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ArozOS-树莓派小型NAS"><a href="#ArozOS-树莓派小型NAS" class="headerlink" title="ArozOS+树莓派小型NAS"></a>ArozOS+树莓派小型NAS</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>参考博文：<a href="https://blog.csdn.net/m0_37728676/article/details/113876815">ArozOS+树莓派打造随身NAS（避坑专用）_JadenFu的博客-CSDN博客</a></p><p>优点：</p><ul><li>小巧轻便，所占的资源较小</li><li>wed界面访问登录</li><li>可以在网页打开视频，pdf等文件，可以进行简单的文本编辑工作</li></ul><p>缺点：</p><ul><li>无法被外网访问（可能是我还不会配置）</li></ul><span id="more"></span><h2 id="安装ArozOS镜像"><a href="#安装ArozOS镜像" class="headerlink" title="安装ArozOS镜像"></a>安装ArozOS镜像</h2><ul><li>树莓派直接烧录ArozOS镜像，该系统属于命令行32位的系统，不具有图形化界面，<a href="https://www.mediafire.com/file/mmjyv77ei9fwab5/arozos_v1.109.7z/file">下载地址</a></li><li>该镜像树莓派官方镜像启动方法一致，这里就不在赘述。</li><li>启动并登录树莓派，默认用户名：<strong>pi</strong> ，密码：<strong>raspberry</strong></li><li>使用<code>sudo raspi-config</code>设置树莓派扩展整个sd卡</li><li>重启树莓派</li></ul><h2 id="树莓派固定IP"><a href="#树莓派固定IP" class="headerlink" title="树莓派固定IP"></a>树莓派固定IP</h2><p>树莓派配置网卡信息的路径时<code>/etc/dhcpcd.conf</code>，使用<code>sudo vim /etc/dhcpcd.conf</code>打开并按以下方法编辑文件</p><pre><code class="vim"># A sample configuration for dhcpcd.# See dhcpcd.conf(5) for details.# Allow users of this group to interact with dhcpcd via the control socket.#controlgroup wheel# Inform the DHCP server of our hostname for DDNS.hostname# Use the hardware address of the interface for the Client ID.clientid# or# Use the same DUID + IAID as set in DHCPv6 for DHCPv4 ClientID as per RFC4361.# Some non-RFC compliant DHCP servers do not reply with this set.# In this case, comment out duid and enable clientid above.#duid# Persist interface configuration when dhcpcd exits.persistent# Rapid commit support.# Safe to enable by default because it requires the equivalent option set# on the server to actually work.option rapid_commit# A list of options to request from the DHCP server.option domain_name_servers, domain_name, domain_search, host_nameoption classless_static_routes# Respect the network MTU. This is applied to DHCP routes.option interface_mtu# Most distributions have NTP support.#option ntp_servers# A ServerID is required by RFC2131.require dhcp_server_identifier# Generate SLAAC address using the Hardware Address of the interface#slaac hwaddr# OR generate Stable Private IPv6 Addresses based from the DUIDslaac private# Example static IP configuration:  interface eth0             #编辑固定有限网卡IP地址static ip_address=192.168.**.226/24   #这里的**按当前IP地址的环境进行更改配置static ip6_address=fd51:42f8:caae:d92e::ff/64static routers=192.168.**.1static domain_name_servers=192.168.0.1 8.8.8.8 fd51:42f8:caae:d92e::1interface wlan0                #编辑固定无线网卡IP地址static ip_address=192.168.**.226/24static ip6_address=fd51:42f8:caae:d92e::ff/64static routers=192.168.**.1static domain_name_servers=192.168.0.1 8.8.8.8 fd51:42f8:caae:d92e::1# It is possible to fall back to a static IP if DHCP fails:# define static profile#profile static_eth0#static ip_address=192.168.1.23/24#static routers=192.168.1.1#static domain_name_servers=192.168.1.1# fallback to static profile on eth0#interface eth0#fallback static_eth0</code></pre><h2 id="访问ArozOS"><a href="#访问ArozOS" class="headerlink" title="访问ArozOS"></a>访问ArozOS</h2><p>通过IP地址进行访问如我的IP地址如：192.168.137.226:8080进入注册界面登录ArozOS</p><p>由于树莓派在接入硬盘的时候不会自动挂载，这时我们使用系统挂载硬盘的方法：</p><p>通过ArozOS系统进行格式化硬盘，并挂载硬盘。</p><img src="/2021/10/23/ArozOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/1.png" class title="[配置磁盘]"><img src="/2021/10/23/ArozOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/2.png" class title="[格式化并挂载磁盘]"><p>然后就可以愉快的玩耍啦！！！</p><p>不过我个人不太喜欢使用这个方法进行挂载硬盘，因为这个方法在某些情况下硬盘会没有识别。挂载硬盘的另一个方法：</p><p>我这里通过树莓派命令的模式在上电的时候自动挂载硬盘，首先我们了解Linux系统下一切都是文件，系统在接入usb的时候会/dev/的路径下生成一个驱动文件，这时候我们可以通过映射的方式读取硬盘，在通过<code>mkdir</code>命令创建/media/storage1的路径，通过一条<code>sudo mount -o rm /dev/sda1 /media/storage1</code>命令进行映射。</p><p>然后vim一个可执行的shell文件，输入<code>sudo vim usb.sh</code>并编辑以下代码：</p><pre><code class="bash">#sudo mount -o rm /dev/sda1 /media/storage1#sudo mount -o rm /dev/sdb1 /media/storage2#sudo mount -o rm /dev/sdc1 /media/storage3#sudo mount -o rm /dev/sdd1 /media/storage4usbdev1=`ls /dev/sd* | grep &#39;sda1&#39;`usb1=/dev/sda1usbdev2=`ls /dev/sd* | grep &#39;sdb1&#39;`usb2=/dev/sdb1usbdev3=`ls /dev/sd* | grep &#39;sdc1&#39;`usb3=/dev/sdc1usbdev4=`ls /dev/sd* | grep &#39;sdd1&#39;`usb4=/dev/sdd1if [[ $usbdev1 == $usb1 ]]; then    sudo mount -o rm /dev/sda1 /media/storage1    echo usb1挂载成功fiif [[ $usbdev2 == $usb2 ]]; then    sudo mount -o rm /dev/sdb1 /media/storage2    echo usb2挂载成功fiif [[ $usbdev3 == $usb3 ]]; then    sudo mount -o rm /dev/sdc1 /media/storage3    echo usb3挂载成功fiif [[ $usbdev4 == $usb4 ]]; then    sudo mount -o rm /dev/sdd1 /media/storage4    echo usb4挂载成功fi</code></pre><p>然后保存退出；</p><p>通过命令<code>sudo cp usb.sh /etc/init.d</code>将文件移动到/etc/init.d的位置</p><p>将usb.sh加入文件上电启动；</p><p>使用vim编辑/etc/rc.local文件<code>sudo vim /etc/rc.local</code>，按照以下的方法进行编辑：</p><pre><code class="bash">#!/bin/sh -e## rc.local## This script is executed at the end of each multiuser runlevel.# Make sure that the script will &quot;exit 0&quot; on success or any other# value on error.## In order to enable or disable this script just change the execution# bits.## By default this script does nothing.# Print the IP address_IP=$(hostname -I) || trueif [ &quot;$_IP&quot; ]; then  printf &quot;My IP address is %s\n&quot; &quot;$_IP&quot;fibash /etc/init.d/usb.sh &gt; /home/pi/usbprint.txtexit 0</code></pre><p>这时我们上电就能自动挂载硬盘了</p><h2 id="ArozOS挂载硬盘驱动"><a href="#ArozOS挂载硬盘驱动" class="headerlink" title="ArozOS挂载硬盘驱动"></a>ArozOS挂载硬盘驱动</h2><p>硬盘挂载后还不能直接在ArozOS中直接使用，还需要在系统中映射一个硬盘驱动。</p><p>选择storage pools</p><img src="/2021/10/23/ArozOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/3.png" class title="[storage pools]"><p>编辑storage pools</p><img src="/2021/10/23/ArozOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/4.png" class title="[编辑storage pools]"><p>点击 new flie system handler，按以下方式进行编辑（仅参考）。</p><img src="/2021/10/23/ArozOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/4.png" class title="[编辑system handler]"><p>最后我们就可以愉快的玩耍啦！！！！！</p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;ArozOS-树莓派小型NAS&quot;&gt;&lt;a href=&quot;#ArozOS-树莓派小型NAS&quot; class=&quot;headerlink&quot; title=&quot;ArozOS+树莓派小型NAS&quot;&gt;&lt;/a&gt;ArozOS+树莓派小型NAS&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;参考博文：&lt;a href=&quot;https://blog.csdn.net/m0_37728676/article/details/113876815&quot;&gt;ArozOS+树莓派打造随身NAS（避坑专用）_JadenFu的博客-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;小巧轻便，所占的资源较小&lt;/li&gt;
+&lt;li&gt;wed界面访问登录&lt;/li&gt;
+&lt;li&gt;可以在网页打开视频，pdf等文件，可以进行简单的文本编辑工作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无法被外网访问（可能是我还不会配置）&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    
+    <category term="树莓派" scheme="http://huajia.online/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>走线通流计算</title>
