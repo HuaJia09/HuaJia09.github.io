@@ -87,6 +87,28 @@
   </entry>
   
   <entry>
+    <title>OJ38</title>
+    <link href="http://huajia.online/2021/09/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://huajia.online/2021/09/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2021-09-22T07:41:39.000Z</published>
+    <updated>2021-12-06T04:18:31.023Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="从零开始学stm32（一）"><a href="#从零开始学stm32（一）" class="headerlink" title="从零开始学stm32（一）"></a>从零开始学stm32（一）</h1><h2 id="arm的发展史"><a href="#arm的发展史" class="headerlink" title="arm的发展史"></a>arm的发展史</h2><p>arm架构是一个32位精简指令集（RISC)处理器架构，其广泛底使用在许多嵌入式系统设计中。</p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101612978.png" alt="image-20211206101612978"></p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101701913.png" alt="image-20211206101701913"></p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101732435.png" alt="image-20211206101732435"></p><h2 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h2><p><strong>冯诺依曼体系结构</strong></p><ul><li>程序（指令）和数据存放在存储器的不同地址，存储单元线性排列，且其位数固定</li><li>缺点：顺序执行，  程序/数据 —》内存—》取指令执行指令</li><li>优点：最大限度的利用资源</li><li>代表：intel X86</li></ul><p><strong>哈佛体系结构</strong></p><ul><li>程序（指令）与数据存储在不同存储器中</li><li>优点：并行工作相对独立</li><li>代表：arm</li></ul><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206102813267.png" alt="image-20211206102813267"></p><h2 id="指令集"><a href="#指令集" class="headerlink" title="指令集"></a>指令集</h2><p>arm使用的是精简指令集(RISC)</p><p>RISC结构优先选取使用频率较高的简单指令，避免复杂指令；</p><p>它将指令的长度固定，指令格式和寻址方式种类减少；</p><p>以控制逻辑为止，不用或少用微码控制。</p><h2 id="处理器工作模式与寄存器"><a href="#处理器工作模式与寄存器" class="headerlink" title="处理器工作模式与寄存器"></a>处理器工作模式与寄存器</h2><table><thead><tr><th>处理器</th><th>描述</th></tr></thead><tbody><tr><td>用户模式（user, usr)</td><td>正常的程序执行模式</td></tr><tr><td>快速中断模式（FIQ， fiq）</td><td>用于高速数据传输和通道处理</td></tr><tr><td>外部中断模式（IRQ，irq）</td><td>用于通常的中断处理</td></tr><tr><td>特权模式（supervisor，sve）</td><td>供操作系统使用的一种保护模式</td></tr><tr><td>数据访问中止模式（abort，abt）</td><td>用于虚拟存储及存储保护</td></tr><tr><td>未定义指令中止模式（undefined，und）</td><td>用于支持通过软件仿真硬件的协处理器</td></tr><tr><td>系统模式（system，sys）</td><td>用于运行特权级的操作系统任务</td></tr></tbody></table><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206111347655.png" alt="image-20211206111347655"></p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206111446363.png" alt="image-20211206111446363"></p><p>R13（堆栈指针，SP）</p><p>R14（连接寄存器，LR)</p><p>R15(程序计数器，PC)</p><p>cpsr与spsr: 程序状态寄存器，spsr是cpsr的影子寄存器</p><h2 id="cortex-M3与stm32概述"><a href="#cortex-M3与stm32概述" class="headerlink" title="cortex-M3与stm32概述"></a>cortex-M3与stm32概述</h2><p>cortex-M3 是一个32位处理器内核，属于armv7架构，哈佛体系结构，其内部数据存取路径、寄存器、存储器接口均是32位。</p><p>stm32f103xx的特点：</p><ul><li>内核：arm cortex-m3 32位的RISC内核</li><li>工作频率：72MHz</li><li>stm32f103xx系列成员之间完全是脚对脚兼容，软件和功能上也兼容</li><li>内置高速存储器，具有丰富的增强I/O端口，和连接到两条APB总线的外设，所有型号的器件都包含2个12位的ADC，7个定时器，还包含标准的通信接口</li></ul><h2 id="stm32时钟系统RCC"><a href="#stm32时钟系统RCC" class="headerlink" title="stm32时钟系统RCC"></a>stm32时钟系统RCC</h2><p>时钟系统的意义：命脉   驱动源</p><ul><li>电源开关（有助于达到低功耗）</li><li>调节速度（stm32系统内核，各种总线和外设所需的工作频率）</li></ul><p><strong>寄存器</strong></p><ul><li>RCC_CR时钟控制寄存器</li><li>RCC_CFGR时钟配置寄存器</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;从零开始学stm32（一）&quot;&gt;&lt;a href=&quot;#从零开始学stm32（一）&quot; class=&quot;headerlink&quot; title=&quot;从零开始学stm32（一）&quot;&gt;&lt;/a&gt;从零开始学stm32（一）&lt;/h1&gt;&lt;h2 id=&quot;arm的发展史&quot;&gt;&lt;a href=&quot;#ar</summary>
+      
+    
+    
+    
+    
+    <category term="stm32" scheme="http://huajia.online/tags/stm32/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《鸟哥的Linux私房菜-基础篇》第四版</title>
     <link href="http://huajia.online/2021/09/13/test-md/"/>
     <id>http://huajia.online/2021/09/13/test-md/</id>
