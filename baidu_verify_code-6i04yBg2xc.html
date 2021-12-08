@@ -377,30 +377,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "" -->
-    var gitment = new Gitment({
-      id: "20210817183431",
-      owner: 'true',
-      repo: 'yilia-plus-pilun',
-      oauth: {
-        client_id: '276c35accc07dadb9383',
-        client_secret: '648f21bb3ae2f6b7d3c45292c7a06f6604a5d98c',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "" -->
+  var giteement = new Giteement({
+    id: '20210817183431',
+    owner: 'huajia',
+    repo: 'yilia-plus-pilun',
+    backcall_uri: 'https://gitee.com/tan-huajia/yilia-plus-pilun',
+    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: '54568fc994df9c0a093b5182fc7c12bf238b04048895eee93f35d81cff294d90',
+      client_secret: '019770ba71d19121c0fdb51153de2438885fc5bf963e42d45dd012cc1ab3be28'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 
