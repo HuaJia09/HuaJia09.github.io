@@ -254,7 +254,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="stm32学习过程遇到的警告及错误"><a href="#stm32学习过程遇到的警告及错误" class="headerlink" title="stm32学习过程遇到的警告及错误"></a>stm32学习过程遇到的警告及错误</h2><h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><p>**.\Objects\key.axf: Error: L6200E: Symbol LED_Init multiply defined (by led.o and key.o). **</p>
+    <h2 id="stm32学习过程遇到的警告及错误"><a href="#stm32学习过程遇到的警告及错误" class="headerlink" title="stm32学习过程遇到的警告及错误"></a>stm32学习过程遇到的警告及错误</h2><h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><p><strong>.\Objects\key.axf: Error: L6200E: Symbol LED_Init multiply defined (by led.o and key.o).</strong></p>
 <p>在编译过程中遇到symbol LED_Init mulitpy defined ,意思是LED_Init 重定义，解决办法就是，将相同的两个函数修改或合并成一个函数。</p>
     
     <a class="article-more-a" href="/2021/12/08/stm32%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E8%AD%A6%E5%91%8A%E5%8F%8A%E9%94%99%E8%AF%AF/#more">more >></a>
@@ -285,6 +285,98 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/12/08/stm32%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E8%AD%A6%E5%91%8A%E5%8F%8A%E9%94%99%E8%AF%AF/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-从零开始学stm32（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/12/06/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/">从零开始学stm32（一）</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/12/06/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
+        <time datetime="2021-12-06T07:41:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-06</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="从零开始学stm32（一）"><a href="#从零开始学stm32（一）" class="headerlink" title="从零开始学stm32（一）"></a>从零开始学stm32（一）</h1><p>链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43271124/article/details/121743505?spm=1001.2014.3001.5501">csdn</a></p>
+<h2 id="arm的发展史"><a href="#arm的发展史" class="headerlink" title="arm的发展史"></a>arm的发展史</h2><p>arm架构是一个32位精简指令集（RISC)处理器架构，其广泛底使用在许多嵌入式系统设计中。</p>
+<p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101612978.png" alt="image-20211206101612978"></p>
+<p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101701913.png" alt="image-20211206101701913"></p>
+<p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101732435.png" alt="image-20211206101732435"></p>
+    
+    <a class="article-more-a" href="/2021/12/06/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stm32</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/12/06/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
     </p>
     
 
@@ -562,98 +654,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/09/22/OJ38/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-从零开始学stm32（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/09/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/">从零开始学stm32（一）</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/09/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-        <time datetime="2021-09-22T07:41:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-22</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="从零开始学stm32（一）"><a href="#从零开始学stm32（一）" class="headerlink" title="从零开始学stm32（一）"></a>从零开始学stm32（一）</h1><p>链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43271124/article/details/121743505?spm=1001.2014.3001.5501">csdn</a></p>
-<h2 id="arm的发展史"><a href="#arm的发展史" class="headerlink" title="arm的发展史"></a>arm的发展史</h2><p>arm架构是一个32位精简指令集（RISC)处理器架构，其广泛底使用在许多嵌入式系统设计中。</p>
-<p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101612978.png" alt="image-20211206101612978"></p>
-<p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101701913.png" alt="image-20211206101701913"></p>
-<p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101732435.png" alt="image-20211206101732435"></p>
-    
-    <a class="article-more-a" href="/2021/09/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stm32</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/09/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
     </p>
     
 
