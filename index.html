@@ -225,6 +225,95 @@
             
 
   
+    <article id="post-stm32学习过程遇到的警告及错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/12/08/stm32%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E8%AD%A6%E5%91%8A%E5%8F%8A%E9%94%99%E8%AF%AF/">stm32学习过程遇到的警告及错误</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/12/08/stm32%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E8%AD%A6%E5%91%8A%E5%8F%8A%E9%94%99%E8%AF%AF/" class="archive-article-date">
+        <time datetime="2021-12-08T08:57:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-08</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="stm32学习过程遇到的警告及错误"><a href="#stm32学习过程遇到的警告及错误" class="headerlink" title="stm32学习过程遇到的警告及错误"></a>stm32学习过程遇到的警告及错误</h2><h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><p>**.\Objects\key.axf: Error: L6200E: Symbol LED_Init multiply defined (by led.o and key.o). **</p>
+<p>在编译过程中遇到symbol LED_Init mulitpy defined ,意思是LED_Init 重定义，解决办法就是，将相同的两个函数修改或合并成一个函数。</p>
+    
+    <a class="article-more-a" href="/2021/12/08/stm32%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E8%AD%A6%E5%91%8A%E5%8F%8A%E9%94%99%E8%AF%AF/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stm32</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/12/08/stm32%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E8%AD%A6%E5%91%8A%E5%8F%8A%E9%94%99%E8%AF%AF/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ArozOS-树莓派小型NAS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -536,85 +625,9 @@
 <p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101612978.png" alt="image-20211206101612978"></p>
 <p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101701913.png" alt="image-20211206101701913"></p>
 <p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101732435.png" alt="image-20211206101732435"></p>
-<h2 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h2><p><strong>冯诺依曼体系结构</strong></p>
-<ul>
-<li>程序（指令）和数据存放在存储器的不同地址，存储单元线性排列，且其位数固定</li>
-<li>缺点：顺序执行，  程序/数据 —》内存—》取指令执行指令</li>
-<li>优点：最大限度的利用资源</li>
-<li>代表：intel X86</li>
-</ul>
-<p><strong>哈佛体系结构</strong></p>
-<ul>
-<li>程序（指令）与数据存储在不同存储器中</li>
-<li>优点：并行工作相对独立</li>
-<li>代表：arm</li>
-</ul>
-<p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206102813267.png" alt="image-20211206102813267"></p>
-<h2 id="指令集"><a href="#指令集" class="headerlink" title="指令集"></a>指令集</h2><p>arm使用的是精简指令集(RISC)</p>
-<p>RISC结构优先选取使用频率较高的简单指令，避免复杂指令；</p>
-<p>它将指令的长度固定，指令格式和寻址方式种类减少；</p>
-<p>以控制逻辑为止，不用或少用微码控制。</p>
-<h2 id="处理器工作模式与寄存器"><a href="#处理器工作模式与寄存器" class="headerlink" title="处理器工作模式与寄存器"></a>处理器工作模式与寄存器</h2><table>
-<thead>
-<tr>
-<th>处理器</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>用户模式（user, usr)</td>
-<td>正常的程序执行模式</td>
-</tr>
-<tr>
-<td>快速中断模式（FIQ， fiq）</td>
-<td>用于高速数据传输和通道处理</td>
-</tr>
-<tr>
-<td>外部中断模式（IRQ，irq）</td>
-<td>用于通常的中断处理</td>
-</tr>
-<tr>
-<td>特权模式（supervisor，sve）</td>
-<td>供操作系统使用的一种保护模式</td>
-</tr>
-<tr>
-<td>数据访问中止模式（abort，abt）</td>
-<td>用于虚拟存储及存储保护</td>
-</tr>
-<tr>
-<td>未定义指令中止模式（undefined，und）</td>
-<td>用于支持通过软件仿真硬件的协处理器</td>
-</tr>
-<tr>
-<td>系统模式（system，sys）</td>
-<td>用于运行特权级的操作系统任务</td>
-</tr>
-</tbody></table>
-<p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206111347655.png" alt="image-20211206111347655"></p>
-<p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206111446363.png" alt="image-20211206111446363"></p>
-<p>R13（堆栈指针，SP）</p>
-<p>R14（连接寄存器，LR)</p>
-<p>R15(程序计数器，PC)</p>
-<p>cpsr与spsr: 程序状态寄存器，spsr是cpsr的影子寄存器</p>
-<h2 id="cortex-M3与stm32概述"><a href="#cortex-M3与stm32概述" class="headerlink" title="cortex-M3与stm32概述"></a>cortex-M3与stm32概述</h2><p>cortex-M3 是一个32位处理器内核，属于armv7架构，哈佛体系结构，其内部数据存取路径、寄存器、存储器接口均是32位。</p>
-<p>stm32f103xx的特点：</p>
-<ul>
-<li>内核：arm cortex-m3 32位的RISC内核</li>
-<li>工作频率：72MHz</li>
-<li>stm32f103xx系列成员之间完全是脚对脚兼容，软件和功能上也兼容</li>
-<li>内置高速存储器，具有丰富的增强I/O端口，和连接到两条APB总线的外设，所有型号的器件都包含2个12位的ADC，7个定时器，还包含标准的通信接口</li>
-</ul>
-<h2 id="stm32时钟系统RCC"><a href="#stm32时钟系统RCC" class="headerlink" title="stm32时钟系统RCC"></a>stm32时钟系统RCC</h2><p>时钟系统的意义：命脉   驱动源</p>
-<ul>
-<li>电源开关（有助于达到低功耗）</li>
-<li>调节速度（stm32系统内核，各种总线和外设所需的工作频率）</li>
-</ul>
-<p><strong>寄存器</strong></p>
-<ul>
-<li>RCC_CR时钟控制寄存器</li>
-<li>RCC_CFGR时钟配置寄存器</li>
-</ul>
-
+    
+    <a class="article-more-a" href="/2021/09/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/#more">more >></a>
+    
     
 
     
@@ -1149,103 +1162,6 @@ fi
 
 
   
-    <article id="post-七的整数倍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/08/16/%E4%B8%83%E7%9A%84%E6%95%B4%E6%95%B0%E5%80%8D/">七的整数倍</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/08/16/%E4%B8%83%E7%9A%84%E6%95%B4%E6%95%B0%E5%80%8D/" class="archive-article-date">
-        <time datetime="2021-08-16T06:56:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="七的奇倍数"><a href="#七的奇倍数" class="headerlink" title="七的奇倍数"></a>七的奇倍数</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>如果一个数既是 7的倍数又不能被 2整除，那么我们称之为七的奇倍数。</p>
-<p>输入一个正整数 n，判断它是否是 7的奇倍数。</p>
-    
-    <a class="article-more-a" href="/2021/08/16/%E4%B8%83%E7%9A%84%E6%95%B4%E6%95%B0%E5%80%8D/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">shell编程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">开课吧作业评测</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/08/16/%E4%B8%83%E7%9A%84%E6%95%B4%E6%95%B0%E5%80%8D/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1395,6 +1311,10 @@ fi
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">stm32</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">shell编程</a>
               </li>
              
@@ -1404,10 +1324,6 @@ fi
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">开课吧作业评测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">stm32</a>
               </li>
              
               <li class="article-tag-list-item">

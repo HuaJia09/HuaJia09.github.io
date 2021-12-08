@@ -6,7 +6,7 @@
   <link href="http://huajia.online/atom.xml" rel="self"/>
   
   <link href="http://huajia.online/"/>
-  <updated>2021-10-23T09:57:17.940Z</updated>
+  <updated>2021-12-08T09:05:15.187Z</updated>
   <id>http://huajia.online/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>stm32学习过程遇到的警告及错误</title>
+    <link href="http://huajia.online/2021/12/08/stm32%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E8%AD%A6%E5%91%8A%E5%8F%8A%E9%94%99%E8%AF%AF/"/>
+    <id>http://huajia.online/2021/12/08/stm32%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E8%AD%A6%E5%91%8A%E5%8F%8A%E9%94%99%E8%AF%AF/</id>
+    <published>2021-12-08T08:57:03.000Z</published>
+    <updated>2021-12-08T09:05:15.187Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="stm32学习过程遇到的警告及错误"><a href="#stm32学习过程遇到的警告及错误" class="headerlink" title="stm32学习过程遇到的警告及错误"></a>stm32学习过程遇到的警告及错误</h2><h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><p>**.\Objects\key.axf: Error: L6200E: Symbol LED_Init multiply defined (by led.o and key.o). **</p><p>在编译过程中遇到symbol LED_Init mulitpy defined ,意思是LED_Init 重定义，解决办法就是，将相同的两个函数修改或合并成一个函数。</p><span id="more"></span><h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><p><strong>..\user\led.c(30): warning:  #188-D: enumerated type mixed with another type</strong></p><p>此问题的意思是枚举类型混合了其他变量，在实际使用中，我使用的是GPIO_WriteBit(GPIOC,GPIO_Pin_13,opr);</p><p>对于opr这个类型，并不是原库函数所定义的枚举变量类型，此时就会报警告，对于此警告，通常可以忽略。</p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;stm32学习过程遇到的警告及错误&quot;&gt;&lt;a href=&quot;#stm32学习过程遇到的警告及错误&quot; class=&quot;headerlink&quot; title=&quot;stm32学习过程遇到的警告及错误&quot;&gt;&lt;/a&gt;stm32学习过程遇到的警告及错误&lt;/h2&gt;&lt;h2 id=&quot;问题1&quot;&gt;&lt;a href=&quot;#问题1&quot; class=&quot;headerlink&quot; title=&quot;问题1&quot;&gt;&lt;/a&gt;问题1&lt;/h2&gt;&lt;p&gt;**.\Objects\key.axf: Error: L6200E: Symbol LED_Init multiply defined (by led.o and key.o). **&lt;/p&gt;
+&lt;p&gt;在编译过程中遇到symbol LED_Init mulitpy defined ,意思是LED_Init 重定义，解决办法就是，将相同的两个函数修改或合并成一个函数。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="stm32" scheme="http://huajia.online/tags/stm32/"/>
+    
+  </entry>
   
   <entry>
     <title>ArozOS+树莓派小型NAS</title>
@@ -91,15 +111,16 @@
     <link href="http://huajia.online/2021/09/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://huajia.online/2021/09/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2021-09-22T07:41:39.000Z</published>
-    <updated>2021-12-06T04:23:54.135Z</updated>
+    <updated>2021-12-08T09:01:14.340Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="从零开始学stm32（一）"><a href="#从零开始学stm32（一）" class="headerlink" title="从零开始学stm32（一）"></a>从零开始学stm32（一）</h1><p>链接：<a href="https://blog.csdn.net/qq_43271124/article/details/121743505?spm=1001.2014.3001.5501">csdn</a></p><h2 id="arm的发展史"><a href="#arm的发展史" class="headerlink" title="arm的发展史"></a>arm的发展史</h2><p>arm架构是一个32位精简指令集（RISC)处理器架构，其广泛底使用在许多嵌入式系统设计中。</p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101612978.png" alt="image-20211206101612978"></p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101701913.png" alt="image-20211206101701913"></p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101732435.png" alt="image-20211206101732435"></p><h2 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h2><p><strong>冯诺依曼体系结构</strong></p><ul><li>程序（指令）和数据存放在存储器的不同地址，存储单元线性排列，且其位数固定</li><li>缺点：顺序执行，  程序/数据 —》内存—》取指令执行指令</li><li>优点：最大限度的利用资源</li><li>代表：intel X86</li></ul><p><strong>哈佛体系结构</strong></p><ul><li>程序（指令）与数据存储在不同存储器中</li><li>优点：并行工作相对独立</li><li>代表：arm</li></ul><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206102813267.png" alt="image-20211206102813267"></p><h2 id="指令集"><a href="#指令集" class="headerlink" title="指令集"></a>指令集</h2><p>arm使用的是精简指令集(RISC)</p><p>RISC结构优先选取使用频率较高的简单指令，避免复杂指令；</p><p>它将指令的长度固定，指令格式和寻址方式种类减少；</p><p>以控制逻辑为止，不用或少用微码控制。</p><h2 id="处理器工作模式与寄存器"><a href="#处理器工作模式与寄存器" class="headerlink" title="处理器工作模式与寄存器"></a>处理器工作模式与寄存器</h2><table><thead><tr><th>处理器</th><th>描述</th></tr></thead><tbody><tr><td>用户模式（user, usr)</td><td>正常的程序执行模式</td></tr><tr><td>快速中断模式（FIQ， fiq）</td><td>用于高速数据传输和通道处理</td></tr><tr><td>外部中断模式（IRQ，irq）</td><td>用于通常的中断处理</td></tr><tr><td>特权模式（supervisor，sve）</td><td>供操作系统使用的一种保护模式</td></tr><tr><td>数据访问中止模式（abort，abt）</td><td>用于虚拟存储及存储保护</td></tr><tr><td>未定义指令中止模式（undefined，und）</td><td>用于支持通过软件仿真硬件的协处理器</td></tr><tr><td>系统模式（system，sys）</td><td>用于运行特权级的操作系统任务</td></tr></tbody></table><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206111347655.png" alt="image-20211206111347655"></p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206111446363.png" alt="image-20211206111446363"></p><p>R13（堆栈指针，SP）</p><p>R14（连接寄存器，LR)</p><p>R15(程序计数器，PC)</p><p>cpsr与spsr: 程序状态寄存器，spsr是cpsr的影子寄存器</p><h2 id="cortex-M3与stm32概述"><a href="#cortex-M3与stm32概述" class="headerlink" title="cortex-M3与stm32概述"></a>cortex-M3与stm32概述</h2><p>cortex-M3 是一个32位处理器内核，属于armv7架构，哈佛体系结构，其内部数据存取路径、寄存器、存储器接口均是32位。</p><p>stm32f103xx的特点：</p><ul><li>内核：arm cortex-m3 32位的RISC内核</li><li>工作频率：72MHz</li><li>stm32f103xx系列成员之间完全是脚对脚兼容，软件和功能上也兼容</li><li>内置高速存储器，具有丰富的增强I/O端口，和连接到两条APB总线的外设，所有型号的器件都包含2个12位的ADC，7个定时器，还包含标准的通信接口</li></ul><h2 id="stm32时钟系统RCC"><a href="#stm32时钟系统RCC" class="headerlink" title="stm32时钟系统RCC"></a>stm32时钟系统RCC</h2><p>时钟系统的意义：命脉   驱动源</p><ul><li>电源开关（有助于达到低功耗）</li><li>调节速度（stm32系统内核，各种总线和外设所需的工作频率）</li></ul><p><strong>寄存器</strong></p><ul><li>RCC_CR时钟控制寄存器</li><li>RCC_CFGR时钟配置寄存器</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="从零开始学stm32（一）"><a href="#从零开始学stm32（一）" class="headerlink" title="从零开始学stm32（一）"></a>从零开始学stm32（一）</h1><p>链接：<a href="https://blog.csdn.net/qq_43271124/article/details/121743505?spm=1001.2014.3001.5501">csdn</a></p><h2 id="arm的发展史"><a href="#arm的发展史" class="headerlink" title="arm的发展史"></a>arm的发展史</h2><p>arm架构是一个32位精简指令集（RISC)处理器架构，其广泛底使用在许多嵌入式系统设计中。</p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101612978.png" alt="image-20211206101612978"></p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101701913.png" alt="image-20211206101701913"></p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206101732435.png" alt="image-20211206101732435"></p><span id="more"></span><h2 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h2><p><strong>冯诺依曼体系结构</strong></p><ul><li>程序（指令）和数据存放在存储器的不同地址，存储单元线性排列，且其位数固定</li><li>缺点：顺序执行，  程序/数据 —》内存—》取指令执行指令</li><li>优点：最大限度的利用资源</li><li>代表：intel X86</li></ul><p><strong>哈佛体系结构</strong></p><ul><li>程序（指令）与数据存储在不同存储器中</li><li>优点：并行工作相对独立</li><li>代表：arm</li></ul><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206102813267.png" alt="image-20211206102813267"></p><h2 id="指令集"><a href="#指令集" class="headerlink" title="指令集"></a>指令集</h2><p>arm使用的是精简指令集(RISC)</p><p>RISC结构优先选取使用频率较高的简单指令，避免复杂指令；</p><p>它将指令的长度固定，指令格式和寻址方式种类减少；</p><p>以控制逻辑为止，不用或少用微码控制。</p><h2 id="处理器工作模式与寄存器"><a href="#处理器工作模式与寄存器" class="headerlink" title="处理器工作模式与寄存器"></a>处理器工作模式与寄存器</h2><table><thead><tr><th>处理器</th><th>描述</th></tr></thead><tbody><tr><td>用户模式（user, usr)</td><td>正常的程序执行模式</td></tr><tr><td>快速中断模式（FIQ， fiq）</td><td>用于高速数据传输和通道处理</td></tr><tr><td>外部中断模式（IRQ，irq）</td><td>用于通常的中断处理</td></tr><tr><td>特权模式（supervisor，sve）</td><td>供操作系统使用的一种保护模式</td></tr><tr><td>数据访问中止模式（abort，abt）</td><td>用于虚拟存储及存储保护</td></tr><tr><td>未定义指令中止模式（undefined，und）</td><td>用于支持通过软件仿真硬件的协处理器</td></tr><tr><td>系统模式（system，sys）</td><td>用于运行特权级的操作系统任务</td></tr></tbody></table><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206111347655.png" alt="image-20211206111347655"></p><p><img src="/E:/物联网工程\任务1\笔记\imag\image-20211206111446363.png" alt="image-20211206111446363"></p><p>R13（堆栈指针，SP）</p><p>R14（连接寄存器，LR)</p><p>R15(程序计数器，PC)</p><p>cpsr与spsr: 程序状态寄存器，spsr是cpsr的影子寄存器</p><h2 id="cortex-M3与stm32概述"><a href="#cortex-M3与stm32概述" class="headerlink" title="cortex-M3与stm32概述"></a>cortex-M3与stm32概述</h2><p>cortex-M3 是一个32位处理器内核，属于armv7架构，哈佛体系结构，其内部数据存取路径、寄存器、存储器接口均是32位。</p><p>stm32f103xx的特点：</p><ul><li>内核：arm cortex-m3 32位的RISC内核</li><li>工作频率：72MHz</li><li>stm32f103xx系列成员之间完全是脚对脚兼容，软件和功能上也兼容</li><li>内置高速存储器，具有丰富的增强I/O端口，和连接到两条APB总线的外设，所有型号的器件都包含2个12位的ADC，7个定时器，还包含标准的通信接口</li></ul><h2 id="stm32时钟系统RCC"><a href="#stm32时钟系统RCC" class="headerlink" title="stm32时钟系统RCC"></a>stm32时钟系统RCC</h2><p>时钟系统的意义：命脉   驱动源</p><ul><li>电源开关（有助于达到低功耗）</li><li>调节速度（stm32系统内核，各种总线和外设所需的工作频率）</li></ul><p><strong>寄存器</strong></p><ul><li>RCC_CR时钟控制寄存器</li><li>RCC_CFGR时钟配置寄存器</li></ul>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;h1 id=&quot;从零开始学stm32（一）&quot;&gt;&lt;a href=&quot;#从零开始学stm32（一）&quot; class=&quot;headerlink&quot; title=&quot;从零开始学stm32（一）&quot;&gt;&lt;/a&gt;从零开始学stm32（一）&lt;/h1&gt;&lt;p&gt;链接：&lt;a href=&quot;https://blog.c</summary>
-      
+    <summary type="html">&lt;h1 id=&quot;从零开始学stm32（一）&quot;&gt;&lt;a href=&quot;#从零开始学stm32（一）&quot; class=&quot;headerlink&quot; title=&quot;从零开始学stm32（一）&quot;&gt;&lt;/a&gt;从零开始学stm32（一）&lt;/h1&gt;&lt;p&gt;链接：&lt;a href=&quot;https://blog.csdn.net/qq_43271124/article/details/121743505?spm=1001.2014.3001.5501&quot;&gt;csdn&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;arm的发展史&quot;&gt;&lt;a href=&quot;#arm的发展史&quot; class=&quot;headerlink&quot; title=&quot;arm的发展史&quot;&gt;&lt;/a&gt;arm的发展史&lt;/h2&gt;&lt;p&gt;arm架构是一个32位精简指令集（RISC)处理器架构，其广泛底使用在许多嵌入式系统设计中。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/E:/物联网工程\任务1\笔记\imag\image-20211206101612978.png&quot; alt=&quot;image-20211206101612978&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/E:/物联网工程\任务1\笔记\imag\image-20211206101701913.png&quot; alt=&quot;image-20211206101701913&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/E:/物联网工程\任务1\笔记\imag\image-20211206101732435.png&quot; alt=&quot;image-20211206101732435&quot;&gt;&lt;/p&gt;</summary>
     
     
     
