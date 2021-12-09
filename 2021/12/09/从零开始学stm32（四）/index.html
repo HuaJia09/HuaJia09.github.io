@@ -20,7 +20,7 @@
 <meta property="og:description" content="第四章第二节思考：如何实现以下功能？  串口回显 LED循环闪烁（间隔1秒） 任务1与任务2不会互相干扰  中断 ​    系统停止当前正在运行的程序转到其他服务，可能是程序接受了比自身优先级高的请求，或者是人为设置中断，中断时属于正常现象。 ​    硬中断 ​        由硬件产生 ​    软件中断 ​        软中断是由当前正在运行的进程所产生。 ​    中断处理过程  当异常">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-09T07:41:39.000Z">
-<meta property="article:modified_time" content="2021-12-09T10:25:28.993Z">
+<meta property="article:modified_time" content="2021-12-09T10:28:32.732Z">
 <meta property="article:author" content="花甲">
 <meta property="article:tag" content="stm32">
 <meta name="twitter:card" content="summary">
@@ -292,6 +292,8 @@
 <li>异常中断程序处理完成后，程序返回到发生中断指令的下一条指令处执行。</li>
 <li>进入异常中断时，要保存呗中断的程序执行现场，在从异常中断处理程序退出时，要恢复被中断的程序的执行现场。</li>
 </ul>
+<span id="more"></span>
+
 <h3 id="EXTI基本概念"><a href="#EXTI基本概念" class="headerlink" title="EXTI基本概念"></a>EXTI基本概念</h3><p><strong>中断产生的根本原因</strong></p>
 <p>​        单片机系统正在运行时，往往时一个单纯的封闭系统。但有些时候需要外部干预，因此可通过中断的方式进行。</p>
 <p><strong>中断和事件</strong></p>
