@@ -6,7 +6,7 @@
   <link href="http://huajia.online/atom.xml" rel="self"/>
   
   <link href="http://huajia.online/"/>
-  <updated>2021-12-08T10:27:18.851Z</updated>
+  <updated>2021-12-09T10:25:28.993Z</updated>
   <id>http://huajia.online/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从零开始学stm32（四）</title>
+    <link href="http://huajia.online/2021/12/09/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
+    <id>http://huajia.online/2021/12/09/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6stm32%EF%BC%88%E5%9B%9B%EF%BC%89/</id>
+    <published>2021-12-09T07:41:39.000Z</published>
+    <updated>2021-12-09T10:25:28.993Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><h2 id="第二节"><a href="#第二节" class="headerlink" title="第二节"></a>第二节</h2><p><strong>思考：如何实现以下功能？</strong></p><ul><li>串口回显</li><li>LED循环闪烁（间隔1秒）</li><li>任务1与任务2不会互相干扰</li></ul><p><strong>中断</strong></p><p>​    系统停止当前正在运行的程序转到其他服务，可能是程序接受了比自身优先级高的请求，或者是人为设置中断，中断时属于正常现象。</p><p>​    <strong>硬中断</strong></p><p>​        由硬件产生</p><p>​    <strong>软件中断</strong></p><p>​        软中断是由当前正在运行的进程所产生。</p><p>​    <strong>中断处理过程</strong></p><ul><li>当异常中断发生时，系统处理完当前指令后，将跳转到相应的异常中断程序处执行。</li><li>异常中断程序处理完成后，程序返回到发生中断指令的下一条指令处执行。</li><li>进入异常中断时，要保存呗中断的程序执行现场，在从异常中断处理程序退出时，要恢复被中断的程序的执行现场。</li></ul><h3 id="EXTI基本概念"><a href="#EXTI基本概念" class="headerlink" title="EXTI基本概念"></a>EXTI基本概念</h3><p><strong>中断产生的根本原因</strong></p><p>​        单片机系统正在运行时，往往时一个单纯的封闭系统。但有些时候需要外部干预，因此可通过中断的方式进行。</p><p><strong>中断和事件</strong></p><p>​        **   中断时软件级，stm32中断线路产生的输入信号到NVIC，在执行中断服务函数。</p><p>​        **   事件时硬件级的，stm32事件线产生后回传输一个脉冲信号给其他外设使用。</p><p>​                事件机制提供了一个完全由硬件自动完成触发到产生结果的通道，不需要软件参与，降低了CPU负荷，节省了中断资源，提高了相应速度，是利用硬件来提升CPU芯片处理事件能力的一个有效方法。</p><p>​        **  中断相应函数</p><ul><li><p>一种处理中断相应的函数，遵行特定原型声明的c函数，运行在中断上下文。</p></li><li><p>中断处理函数不能被阻塞，其内部的程序必须运行非常快</p></li><li><p>告诉硬件已经收到了它发出的中断，中断服务程序通常分为两半，上半部：只执行哪些可以很快执行的代码，如向硬件确认已收到中断号等。下半部：执行中断触发需要完成的其他工作</p></li><li><p>执行在中断上下文中的代码注意事项，中断上下文的代码<strong>不能进入休眠</strong>，中断处理程序应该<strong>尽快结束</strong>。</p><p><strong>中断原理</strong></p><p>外部信号从输入线管脚进入。</p><p>经过边沿检测电路</p><p>通过或门中断挂起请求寄存器，如果中断屏蔽寄存器对应位为0，则该请求信号不能传输到与门另一端，实现中断屏蔽</p><h2 id="第三节"><a href="#第三节" class="headerlink" title="第三节"></a>第三节</h2><p><strong>NVIC基本概念</strong></p><p>内嵌向量中断控制器——–与内核紧密相连，内核外设</p><p>中断优先级</p><p>​        包括两个优先级：抢占优先级和子优先级</p><p>​                所有的优先级可编程的中断源都需要指定这两种优先级。</p><p>​                    抢占优先级：决定是否可以产生中断嵌套</p><p>​                    子优先级：决定中断响应顺序</p><p>​                    若两种优先级一样，则看中断源在中断向量表中的偏移量，偏移量小的先响应。</p><p>NVIC寄存器</p><ul><li>NVIC_ISERx/NVIC_ICERx 中断使能（设置/清除）寄存器</li><li>NVIC_ISPRx /NVIC_ICPRx中断挂起设置/清除寄存器</li><li>NVIC_IABRx 激活位寄存器</li><li>NVIC_IPRx 中断优先级寄存器</li><li>NVIC_STIR 软件触发中断寄存器</li></ul></li></ul><h4 id="外部中断思路"><a href="#外部中断思路" class="headerlink" title="外部中断思路"></a>外部中断思路</h4><ul><li>根据原理图确定相应的外部中断信号线</li><li>配置外部中断<ul><li>选择EXTI的信号源</li><li>选择EXTI类型：中断、事件</li><li>选择EXTI的触发模式：上升沿、下降沿</li><li>EXTI使能</li></ul></li></ul><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="c">//key.htypedef enum&#123;    PRESS,RESS&#125;KEY_orp;typedef enum &#123;    CHECK,INTERRUPT&#125;MODE;#define KEY_MODE INTERRUPT extern void key_exit_init(void);extern void key_nvic_init(void);extern void KEY_Init(MODE mode);extern void delay_us(u8 time);extern u8 key_read(void);extern u8 flag;</code></pre><pre><code class="c">//key.c#include&lt;stm32f10x_rcc.h&gt;#include&lt;stm32f10x_gpio.h&gt;#include&lt;stm32f10x_rcc.h&gt;#include&lt;stm32f10x_exti.h&gt;#include&lt;misc.h&gt;#include&lt;key.h&gt;//PB12,KEY高电平有效//当按键不被按下的时候，它一直稳定在低电平--下拉void delay_us(u8 time)&#123;    while(time--)&#123;        int i = 1000;        while(i--);    &#125;&#125;void key_exit_init(void)&#123;    EXTI_InitTypeDef KEY_exit;    RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);    GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource12);    KEY_exit.EXTI_Line = EXTI_Line12;    KEY_exit.EXTI_Mode = EXTI_Mode_Interrupt;    KEY_exit.EXTI_Trigger = EXTI_Trigger_Rising;    KEY_exit.EXTI_LineCmd = ENABLE;    EXTI_Init(&amp;KEY_exit);&#125;void key_nvic_init(void)&#123;    NVIC_InitTypeDef key_nvic;    key_nvic.NVIC_IRQChannel = EXTI15_10_IRQn;    key_nvic.NVIC_IRQChannelSubPriority = 0;    key_nvic.NVIC_IRQChannelPreemptionPriority = 1;    key_nvic.NVIC_IRQChannelCmd = ENABLE;    NVIC_Init(&amp;key_nvic);&#125;void KEY_Init(MODE mode)&#123;    GPIO_InitTypeDef KEY;    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);    //结构体初始化    KEY.GPIO_Mode = GPIO_Mode_IPD;    KEY.GPIO_Pin = GPIO_Pin_12;    //GPIO初始化    GPIO_Init(GPIOB, &amp;KEY);                if (INTERRUPT == mode)&#123;                key_exit_init();                key_nvic_init();        &#125;else&#123;&#125;&#125;//读取按键u8 key_read(void)&#123;        u8 result = 0;        delay_us(10);        result = GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_12);        //按键去抖        if (result == PRESS)&#123;            return 0;        &#125;else&#123;             return 1;        &#125;&#125;u8 flag = 0;void EXTI15_10_IRQHandler(void)&#123;    if (SET == EXTI_GetITStatus(EXTI_Line12))&#123;        flag = !flag;    &#125;        EXTI_ClearITPendingBit(EXTI_Line12);&#125;</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;第四章&quot;&gt;&lt;a href=&quot;#第四章&quot; class=&quot;headerlink&quot; title=&quot;第四章&quot;&gt;&lt;/a&gt;第四章&lt;/h1&gt;&lt;h2 id=&quot;第二节&quot;&gt;&lt;a href=&quot;#第二节&quot; class=&quot;headerlink&quot; title=&quot;第二节&quot;&gt;&lt;/a&gt;第二节&lt;/h</summary>
+      
+    
+    
+    
+    
+    <category term="stm32" scheme="http://huajia.online/tags/stm32/"/>
+    
+  </entry>
   
   <entry>
     <title>stm32学习过程遇到的警告及错误</title>
